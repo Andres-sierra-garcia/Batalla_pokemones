@@ -28,12 +28,17 @@
             <p>ronda actual = {{ currentRound }}</p>
             <p>puntos equipo 1 = {{ challengerOne.points }}</p>
             <p>puntos equipo 2 = {{ challengerTwo.points }}</p>
+            <div class="tip">
+                    <q-select id="options" v-model="selectedOption" :options="options" label="Elegir estadisticas"
+                        filled />
+                </div>  
         </div>
 
       
         <div class="divContainerImages">
             <div id="challengerOne">
                 <h2>{{  challengerOne.name}}</h2>
+                <p> {{ statSelected }} = {{ challengerOne[statSelected] }} </p>
             <img :src="challengerOne.image" id="challengerOne" alt="">
             </div>
 
@@ -41,6 +46,7 @@
 
             <div id="challengerTwo">
                 <h2>{{  challengerTwo.name}}</h2>
+                <p> {{ statSelected }} = {{ challengerTwo[statSelected] }} </p>
             <img :src="challengerTwo.image" alt="Challenger 2" /><!--concatenar imagenes mañana-->
             </div>
         </div>
@@ -80,6 +86,7 @@ let rounds = ref(null);
 let currentRound = ref(0)
 let winner = ref("")
 let btnDisable = ref(false)
+let statSelected = ref("")
 
 let challengerOne = ref({
     image: "",
@@ -142,6 +149,7 @@ async function getData() {
         showMenu.value = false;
         showBattle.value = true;
         calculatecurrentRound()
+        statSelected.value = selectedOption.value.value
 
 
     } catch (error) {
