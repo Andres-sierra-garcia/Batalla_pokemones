@@ -3,7 +3,7 @@ body{
 }
 
 *{
-    margin: 0;
+    margin: 0%;
   }
 
 #app{
@@ -59,6 +59,7 @@ h1{
     align-items: center;
     width: 90%;
     border-radius: 10px;
+    height: 95%;
     border: 1px solid white;
     background-color: rgba(255, 255, 255, 0.5);
 }
@@ -78,7 +79,9 @@ h2{
 }
 
 .containerButtons{
-    margin: 2%;
+    margin: 1%;
+    position: absolute;
+    bottom: 10px;
 }
 
 .divContainerImages {
@@ -176,4 +179,133 @@ p{
 
   #rounds{
     font: menu;
+  }
+
+
+
+  @media (max-width: 1100px){
+
+    h2{
+      font-size: 1.75rem;
+    }
+
+    .divContainerImages img{
+      width: 200px;
+      height: 200px;
+    }
+
+    .containerButtons{
+      bottom: 70px;
+    }
+  }
+
+  @media(max-width: 960px){
+    h1{
+      font-size: 5rem !important;
+    }
+
+    h2{
+      font-size: 1.75rem !important;
+    }
+
+    .divContainerImages{
+
+      height: 55%;
+    }
+
+  }
+  
+
+
+
+  @media(max-width:620px){
+
+    h1{
+      font-size: 4rem !important;
+    }
+
+    h2{
+      font-size: 1.5rem !important;
+    }
+
+    .divContainerImages{
+      height: 50%;
+    }
+
+    .divContainerImages img{
+      width: 150px;
+      height: 150px;
+    }
+
+    #fightIcon{
+      width: 60px;
+      height: 60px;
+    }
+  }
+
+  @media(max-width:520px){
+
+    .divContainerImages{
+      height: 50%;
+    }
+
+
+    .divContainerButtons{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+      bottom: 0px;
+    }
+  }
+
+  @media(max-width:523px){
+    .information{
+      gap: 10px;
+    }
+
+    .divContainerImages img{
+      width: 100px;
+      height: 100px;
+    }
+  }
+
+  @media (max-width: 465px){
+
+    .information{
+      width: 60%;
+    }
+
+    p{
+      font-size: 15px;
+    }
+
+    .q-btn-group {
+      width: 90%;
+    }
+
+    h2{
+      font-size: 1.2rem !important;
+    }
+
+    #fightIcon{
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  @media (max-width: 375px){
+    h1{
+      font-size: 3rem !important;
+    }
+
+    .mainContainer{
+      width: 100%;
+      height: 100%;
+    }
+
+    .divContainerImages{
+      gap: 10px;
+    }
   }

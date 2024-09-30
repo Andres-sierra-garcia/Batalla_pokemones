@@ -44,14 +44,15 @@
             <img :src="challengerTwo.image" alt="Challenger 2" /><!--concatenar imagenes mañana-->
             </div>
         </div>
-        <p v-show="winner != ''">el ganador es {{ winner }} </p>
-        <div class="containerButtons">
+        <div class="divContainerButtons">
+            <p v-show="showTextWinner">el ganador es {{ winner }} </p>
             <q-btn-group push>
                 <q-btn @click="nextRound()" :disable="btnDisable" push label="Siguiente ronda" icon="swap_horiz" />
                 <q-btn @click="getWinner()" :disable="btnDisable" push label="Combatir" icon="play_arrow" />
                 <q-btn push label="Inicio" icon="home" @click="show = false" />
             </q-btn-group>
         </div>
+        
 
     </div>
 
@@ -61,7 +62,7 @@
     <div class="menuEnd" v-show="showMenuEnd">
         <h1>La batalla ha finalizado</h1>
         <p>La victoria fue para el {{ winner }} </p>
-        <q-btn push label="Volver al menu" icon="home" @click="showMenuEnd = false" />
+        <q-btn push label="Volver al menu" icon="home" @click="showMenu = true ; showMenuEnd = false" />
 
     </div>
 
@@ -73,6 +74,7 @@ import axios from 'axios';
 let showMenu = ref(true);
 let showBattle = ref(false);
 let showMenuEnd = ref(false);
+let showTextWinner = ref(false);
 let selectedOption = ref(null); // opcion seleccionada 
 let rounds = ref(null);
 let currentRound = ref(0)
@@ -169,6 +171,7 @@ function getWinner() {
             challengerTwo.value.points++
             break;
     }
+    showTextWinner.value = true
 }
 
 
@@ -224,6 +227,8 @@ async function nextRound() {
     console.log(challengerOne.value.Hp);
     console.log(challengerTwo.value.Hp);
     calculatecurrentRound()
+    showTextWinner.value = false
+
     
 }
 
