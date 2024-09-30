@@ -16,6 +16,11 @@ body{
     justify-content: center;
 }
 
+#fightIcon{
+    width: 100px;
+    height: 100px;
+}
+
 #div_menu{
     border-radius: 10px;
     padding: 10px;
@@ -30,7 +35,14 @@ body{
 }
 
 #div_menu h1 {
-    font-size: 25px;
+  font-family: "Cinzel", serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+h1{
+  font-family: "Cinzel", serif;
 }
 
 #options{
@@ -51,16 +63,18 @@ body{
     background-color: rgba(255, 255, 255, 0.5);
 }
 
-.divTitleChallenger{
+h2{
+    font-family: "Cinzel", serif;
+    font-size: 30px;
+    margin: 2% !important ;
+}
+
+#challengerOne,
+#challengerTwo {
     display: flex;
-    justify-content: space-around;
-    width: 95%;
-    background-color: black;
-    color: white;
-    border: 3px solid white;
-    border-radius: 10px;
-    padding: 1%;
-    
+    flex-direction: column;
+    align-items: center;
+
 }
 
 .containerButtons{
@@ -82,10 +96,26 @@ body{
 }
 
 p{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Cinzel", serif;
     font-size: 20px;
     margin: 0% !important ;
+  
 
+}
+
+.information{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    width: 95%;
+    background-color: black;
+    color: white;
+    border: 3px solid white;
+    border-radius: 10px;
+    padding: 1%;
+    align-items: center;
+    justify-content: center;
+    margin: 2%;
 }
 
 
@@ -99,7 +129,7 @@ p{
     background-color: #f43f5e;
   }
   
-  .cards .blue {
+  .cards .blue {      
     background-color: #3b82f6;
   }
   
@@ -119,7 +149,10 @@ p{
     color: white;
     cursor: pointer;
     transition: 400ms;
+    font-family: "Cinzel", serif;
+    font-size: 20px;
   }
+  
   
   .cards .card p.tip {
     font-size: 1em;
@@ -139,4 +172,8 @@ p{
   .cards:hover > .card:not(:hover) {
     filter: blur(10px);
     transform: scale(0.9, 0.9);
+  }
+
+  #rounds{
+    font: menu;
   }
