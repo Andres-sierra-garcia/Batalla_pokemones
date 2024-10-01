@@ -29,25 +29,28 @@
             <p>puntos equipo 1 = {{ challengerOne.points }}</p>
             <p>puntos equipo 2 = {{ challengerTwo.points }}</p>
             <div class="tip">
-                    <q-select id="options" v-model="selectedOption" :options="options" label="Elegir estadisticas"
-                        filled />
-                </div>  
+                <q-select id="options" v-model="selectedOption" :options="options" label="Elegir estadisticas" filled />
+            </div>
         </div>
 
-      
+
         <div class="divContainerImages">
             <div id="challengerOne">
-                <h2>{{  challengerOne.name}}</h2>
-                <p> {{ statSelected }} = {{ challengerOne[statSelected] }} </p>
-            <img :src="challengerOne.image" id="challengerOne" alt="">
+                <h2>{{ challengerOne.name }}</h2>
+                <p v-if="selectedOption">
+                    {{ selectedOption.label }} = {{ challengerOne[selectedOption.value] }}
+                </p>
+                <img :src="challengerOne.image" id="challengerOne" alt="">
             </div>
 
             <img src="./assets/fightIcon.png" id="fightIcon" alt="">
 
             <div id="challengerTwo">
-                <h2>{{  challengerTwo.name}}</h2>
-                <p> {{ statSelected }} = {{ challengerTwo[statSelected] }} </p>
-            <img :src="challengerTwo.image" alt="Challenger 2" /><!--concatenar imagenes mañana-->
+                <h2>{{ challengerTwo.name }}</h2>
+                <p v-if="selectedOption">
+                    {{ selectedOption.label }} = {{ challengerTwo[selectedOption.value] }}
+                </p>
+                <img :src="challengerTwo.image" alt="Challenger 2" /><!--concatenar imagenes mañana-->
             </div>
         </div>
         <div class="divContainerButtons">
@@ -58,17 +61,17 @@
                 <q-btn push label="Inicio" icon="home" @click="show = false" />
             </q-btn-group>
         </div>
-        
+
 
     </div>
 
 
     <!--3ra parte-->
-    
+
     <div class="menuEnd" v-show="showMenuEnd">
         <h1>La batalla ha finalizado</h1>
         <p>La victoria fue para el {{ winner }} </p>
-        <q-btn push label="Volver al menu" icon="home" @click="showMenu = true ; showMenuEnd = false" />
+        <q-btn push label="Volver al menu" icon="home" @click="showMenu = true; showMenuEnd = false" />
 
     </div>
 
@@ -86,7 +89,6 @@ let rounds = ref(null);
 let currentRound = ref(0)
 let winner = ref("")
 let btnDisable = ref(false)
-let statSelected = ref("")
 
 let challengerOne = ref({
     image: "",
@@ -149,7 +151,6 @@ async function getData() {
         showMenu.value = false;
         showBattle.value = true;
         calculatecurrentRound()
-        statSelected.value = selectedOption.value.value
 
 
     } catch (error) {
@@ -237,7 +238,7 @@ async function nextRound() {
     calculatecurrentRound()
     showTextWinner.value = false
 
-    
+
 }
 
 function calculatecurrentRound() {
@@ -271,7 +272,4 @@ function endMenu() {
         }
     }
 }
-
-
-
 </script>
