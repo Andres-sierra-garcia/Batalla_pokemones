@@ -229,14 +229,68 @@ p{
     }
 
   }
+
+  @media(max-width:830px){
+
+    #div_menu{
+      width: 80%;
+      padding: 25px 0px 150px 0px;
+    }
+
+    h1{
+      font-size: 4rem !important;
+      letter-spacing: 0px !important;
+      line-height: 50px !important;
+      margin: 2%;
+    }
+
+   .cards .card{
+    width: 200px;
+   }
+
+
+   p{
+    font-size: 13px !important;
+    font-weight: 600;
+   }
+
+   .cards button{
+    font-size: 13px !important;
+    font-weight: 600;
+    width: 150px !important;
+    align-self: center;
+    height: 35px !important;
+    border-radius: 50px !important;
+   }
+
+   .cards input{
+    font-size: 13px !important;
+    font-weight: 600;
+    align-self: center;
+    height: 25px !important;
+    border-radius: 10px !important;
+   }
+  }
   
 
 
 
-  @media(max-width:620px){
+  @media(max-width:650px){
+    
+    p{
+      font-size: 15px !important;
+      font-weight: 600;
+     }
+
+     
+   .cards button{
+    font-size: 15px !important;
+ 
+   }
 
     h1{
-      font-size: 4rem !important;
+      font-size: 5rem !important;
+      line-height: 70px !important;
     }
 
     h2{
@@ -262,6 +316,11 @@ p{
 
     .divContainerImages{
       height: 50%;
+    }
+
+    h1{
+      font-size: 4rem !important;
+      line-height: 70px !important;
     }
 
 
@@ -299,6 +358,9 @@ p{
     .q-btn-group {
       width: 90%;
     }
+    h1{
+      font-size: 3rem !important;
+    }
 
     h2{
       font-size: 1.2rem !important;
@@ -311,6 +373,13 @@ p{
   }
 
   @media (max-width: 375px){
+
+    #div_menu{
+      width: 90%;
+      padding: 25px 0px 150px 0px;
+    }
+
+
     h1{
       font-size: 3rem !important;
     }

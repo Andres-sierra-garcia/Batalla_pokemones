@@ -58,7 +58,7 @@
             <q-btn-group push>
                 <q-btn @click="nextRound()" :disable="btnDisable" push label="Siguiente ronda" icon="swap_horiz" />
                 <q-btn @click="getWinner()" :disable="btnDisable" push label="Combatir" icon="play_arrow" />
-                <q-btn push label="Inicio" icon="home" @click="show = false" />
+                <q-btn push label="Inicio" icon="home" @click="showMenu = true; showBattle = false" />
             </q-btn-group>
         </div>
 
@@ -79,6 +79,7 @@
 <script setup>
 import { ref } from 'vue';
 import axios from 'axios';
+import Swal from 'sweetalert';
 
 let showMenu = ref(true);
 let showBattle = ref(false);
@@ -114,14 +115,22 @@ let challengerTwo = ref({
 let options = ref([
     { label: 'Hp', value: 'Hp' },
     { label: 'Attack', value: 'Attack' },
-    { label: 'Defense', value: 'Defense' },
+    { label: 'Defense', value: 'Defense'},
     { label: 'Speed', value: 'Speed' }
 ])
 
 async function getData() {
-    let id1 = Math.floor(Math.random() * 898) + 1;
+    if (rounds.value == null || selectedOption.value == null) {
+        Swal({
+  icon: "error",
+  title: "Oops...",
+  text: "Asegurate de rellenar todos los campos",
+  footer: '<a href="#">Why do I have this issue?</a>'
+});
+    }
+    else {
+        let id1 = Math.floor(Math.random() * 898) + 1;
     let id2 = Math.floor(Math.random() * 898) + 1;
-
     try {
         let [pokemon1, pokemon2] = await Promise.all([
             axios.get(`https://pokeapi.co/api/v2/pokemon/${id1}`),
@@ -157,6 +166,8 @@ async function getData() {
         alert('Pokemon not found');
         show.value = false;
     }
+    }
+   
 }
 
 function getWinner() {
