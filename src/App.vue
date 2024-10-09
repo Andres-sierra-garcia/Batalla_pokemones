@@ -56,7 +56,7 @@
         <div class="divContainerButtons">
             <p v-show="showTextWinner">el ganador es {{ winner }} </p>
             <q-btn-group push>
-                <q-btn @click="nextRound()" :disable="btnDisable" push label="Siguiente ronda" icon="swap_horiz" />
+                <q-btn @click="nextRound()"  push label="Siguiente ronda" icon="swap_horiz" />
                 <q-btn @click="getWinner()" :disable="btnDisable" push label="Combatir" icon="play_arrow" />
                 <q-btn push label="Inicio" icon="home" @click="showMenu = true; showBattle = false" />
             </q-btn-group>
@@ -192,6 +192,7 @@ function getWinner() {
             break;
     }
     showTextWinner.value = true
+    btnDisable.value = true
 }
 
 
@@ -239,6 +240,7 @@ async function nextRound() {
             challengerTwo.value.Speed = replacementPokemon.data.stats[5].base_stat;
 
         }
+        btnDisable.value = false
 
     }
     catch (error) {
