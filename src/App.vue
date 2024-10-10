@@ -37,7 +37,7 @@
         <div class="divContainerImages">
             <div id="challengerOne">
                 <h2>{{ challengerOne.name }}</h2>
-                <p v-if="selectedOption">
+                <p v-if="selectedOption" v-show="showTextWinner">
                     {{ selectedOption.label }} = {{ challengerOne[selectedOption.value] }}
                 </p>
                 <img :src="challengerOne.image" id="challengerOne" alt="">
@@ -47,7 +47,7 @@
 
             <div id="challengerTwo">
                 <h2>{{ challengerTwo.name }}</h2>
-                <p v-if="selectedOption">
+                <p v-if="selectedOption" v-show="showTextWinner" >
                     {{ selectedOption.label }} = {{ challengerTwo[selectedOption.value] }}
                 </p>
                 <img :src="challengerTwo.image" alt="Challenger 2" /><!--concatenar imagenes mañana-->
@@ -56,7 +56,7 @@
         <div class="divContainerButtons">
             <p v-show="showTextWinner">el ganador es {{ winner }} </p>
             <q-btn-group push>
-                <q-btn @click="nextRound()"  push label="Siguiente ronda" icon="swap_horiz" />
+                <q-btn @click="nextRound()" :disable="btnDisable == false"  push label="Siguiente ronda" icon="swap_horiz" />
                 <q-btn @click="getWinner()" :disable="btnDisable" push label="Combatir" icon="play_arrow" />
                 <q-btn push label="Inicio" icon="home" @click="showMenu = true; showBattle = false" />
             </q-btn-group>
@@ -70,8 +70,8 @@
 
     <div class="menuEnd" v-show="showMenuEnd">
         <h1>La batalla ha finalizado</h1>
-        <p>La victoria fue para el {{ winner }} </p>
-        <q-btn push label="Volver al menu" icon="home" @click="showMenu = true; showMenuEnd = false" />
+        <p>La victoria fue paraaaa el {{ winner }} </p>
+        <q-btn push label="Volver al menuuuu" icon="home" @click="showMenu = true; showMenuEnd = false ; reset()" />
 
     </div>
 
@@ -285,4 +285,17 @@ function endMenu() {
         }
     }
 }
+    function reset (){
+        showMenu.value = true
+        showMenuEnd.value = false
+        showBattle.value = false
+        currentRound.value = 0
+        challengerOne.value.points = 0
+        challengerTwo.value.points = 0
+        winner.value = ""
+        btnDisable.value = false
+        rounds.value = null
+        selectedOption.value = null
+    }
+
 </script>
